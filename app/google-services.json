@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "837569605998",
+    "firebase_url": "https://data-3769a.firebaseio.com",
+    "project_id": "data-3769a",
+    "storage_bucket": "data-3769a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837569605998:android:467790a42a29a7e2",
+        "android_client_info": {
+          "package_name": "com.solidunion.callrecorder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "837569605998-5mfunqn7v134n7q6psurq6f3k22f9d8j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXKDn4G7GAollH0N7U3sqNtyR_k_MeivA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

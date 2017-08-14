@@ -1,0 +1,201 @@
+apply plugin: 'com.android.application'
+
+def releaseDate() {
+    return new Date().format("MMdd", TimeZone.getTimeZone("UTC+8"))
+}
+
+def parseMapping(filename) {
+    Map<String, String> mapping = new HashMap<String, String>()
+    List<String> lines = file(filename).readLines()
+    for (String line : lines) {
+        String[] item = line.split("->")
+        if (item.length < 2)
+            continue
+
+        String key = item[0].trim()
+        String value = item[1].trim()
+        value = value.substring(0, value.length() - 1).trim()
+        mapping.put(key, value)
+    }
+
+    return mapping
+}
+
+def mappingManifest(applicationVariants, filename) {
+    Map<String, String> mapping = parseMapping(filename)
+
+    applicationVariants.all { variant ->
+        if (variant.buildType.name != "debug") {
+            variant.outputs.each { output ->
+                def manifestOutFile = output.processManifest.manifestOutputFile
+                def content = manifestOutFile.getText("UTF-8")
+                for (String key : mapping.keySet()) {
+                    if (content.contains(key)) {
+                        println "mappingManifest: " + "key:" + key + " " + manifestOutFile
+                        content = content.replaceAll(key, mapping.get(key))
+                    }
+                }
+                manifestOutFile.write(content, 'UTF-8')
+            }
+        }
+    }
+}
+
+def mappingResources(applicationVariants, filename) {
+    Map<String, String> mapping = parseMapping(filename)
+
+    applicationVariants.all { variant ->
+        if (variant.buildType.name != "debug") {
+            def dir = new File("${buildDir}/intermediates/res/merged/${variant.dirName}")
+            dir.eachFileRecurse { file ->
+                if (file.name.endsWith(".xml")) {
+                    String content = file.getText('UTF-8')
+                    for (String key : mapping.keySet()) {
+                        if (content.contains(key)) {
+                            println "mappingResources: " + "key:" + key + " " + file
+                            content = content.replaceAll(key, mapping.get(key))
+                        }
+                    }
+                    file.write(content, 'UTF-8')
+                }
+            }
+        }
+    }
+}
+
+def applyMapping(applicationVariants, filename) {
+    // read mapping
+    Map<String, String> mapping = parseMapping(filename)
+
+    // mapping manifest
+    applicationVariants.all { variant ->
+        if (variant.buildType.name != "debug") {
+            variant.outputs.each { output ->
+                output.processManifest.doLast {
+                    def manifestOutFile = output.processManifest.manifestOutputFile
+                    // println "mapping: " + manifestOutFile
+                    def content = manifestOutFile.getText("UTF-8")
+                    for (String key : mapping.keySet())
+                        content = content.replaceAll(key, mapping.get(key))
+                    manifestOutFile.write(content, 'UTF-8')
+                }
+            }
+        }
+    }
+
+    // mapping resources
+    applicationVariants.all { variant ->
+        if (variant.buildType.name != "debug") {
+            variant.mergeResources.doLast {
+                def dir = new File("${buildDir}/intermediates/res/merged/${variant.dirName}")
+                dir.eachFileRecurse { file ->
+                    if (file.name.endsWith(".xml")) {
+                        // println "mapping: " + file
+                        String content = file.getText('UTF-8')
+                        for (String key : mapping.keySet())
+                            content = content.replaceAll(key, mapping.get(key))
+                        file.write(content, 'UTF-8')
+                    }
+                }
+            }
+        }
+    }
+}
+
+android {
+
+    compileSdkVersion 23
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "com.solidunion.callrecorder"
+        minSdkVersion 14
+        targetSdkVersion 21
+        versionCode rootProject.ext.versionCode
+        versionName "1.0.${versionCode}"
+
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('../key.key')
+            storePassword '123456'
+            keyAlias 'key'
+            keyPassword '123456'
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), "proguard-project.txt"
+            zipAlignEnabled true
+            signingConfig signingConfigs.release
+
+            lintOptions {
+                disable 'MissingTranslation', 'ValidFragment', 'ExtraTranslation'
+            }
+
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    if (output.zipAlign) {
+                        def file = output.outputFile
+                        def fileName = file.name.replace("app-release.apk", "analytics-demo-release" + "-v" + "${variant.mergedFlavor.versionName}" + ".apk")
+                        output.outputFile = new File(file.parent, fileName)
+                    }
+
+                    def file = output.packageApplication.outputFile
+                    def fileName = file.name.replace("app-release.apk", "analytics-demo-release" + "-v" + "${variant.mergedFlavor.versionName}" + ".apk")
+                    output.packageApplication.outputFile = new File(file.parent, fileName)
+                }
+            }
+
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    if (variant.getBuildType().isMinifyEnabled()) {
+                        variant.assemble.doLast {
+                            copy {
+                                from variant.mappingFile
+                                into output.outputFile.parent;
+                                rename { String fileName ->
+                                    "analytics-demo-release-mapping" + "-v" + "${variant.mergedFlavor.versionName}" + ".txt"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // applyMapping(applicationVariants, "mapping.txt");
+        }
+    }
+
+    dependencies {
+        compile fileTree(dir: 'libs', include: ['*.jar'])
+
+        compile 'com.android.support:multidex:1.0.1'
+
+        debugCompile project(path: ':analytics', configuration: 'normalDebug')
+        releaseCompile project(path: ':analytics', configuration: 'normalRelease')
+    }
+}
+
+task remapping {
+    doLast {
+        mappingManifest(android.applicationVariants, "mapping.txt")
+        mappingResources(android.applicationVariants, "mapping.txt")
+    }
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name == 'assembleRelease') {
+        // task.dependsOn remapping
+    }
+}
+
+apply plugin: 'com.google.gms.google-services'

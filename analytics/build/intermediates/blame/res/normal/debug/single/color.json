@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "E:\\Zoomy\\AnalyticsSdk\\analyticssdk\\analytics\\build\\intermediates\\res\\merged\\normal\\debug\\color\\common_google_signin_btn_text_light.xml",
+        "source": "E:\\Zoomy\\AnalyticsSdk\\analyticssdk\\analytics\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.0\\res\\color\\common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "E:\\Zoomy\\AnalyticsSdk\\analyticssdk\\analytics\\build\\intermediates\\res\\merged\\normal\\debug\\color\\common_google_signin_btn_text_dark.xml",
+        "source": "E:\\Zoomy\\AnalyticsSdk\\analyticssdk\\analytics\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.0\\res\\color\\common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "E:\\Zoomy\\AnalyticsSdk\\analyticssdk\\analytics\\build\\intermediates\\res\\merged\\normal\\debug\\color\\common_google_signin_btn_tint.xml",
+        "source": "E:\\Zoomy\\AnalyticsSdk\\analyticssdk\\analytics\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.0\\res\\color\\common_google_signin_btn_tint.xml"
+    }
+]

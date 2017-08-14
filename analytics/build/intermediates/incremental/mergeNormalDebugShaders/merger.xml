@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="E:\Zoomy\AnalyticsSdk\analyticssdk\analytics\src\main\shaders"/></dataSet><dataSet config="normal"><source path="E:\Zoomy\AnalyticsSdk\analyticssdk\analytics\src\normal\shaders"/></dataSet><dataSet config="debug"><source path="E:\Zoomy\AnalyticsSdk\analyticssdk\analytics\src\debug\shaders"/></dataSet><dataSet config="normalDebug"><source path="E:\Zoomy\AnalyticsSdk\analyticssdk\analytics\src\normalDebug\shaders"/></dataSet></merger>

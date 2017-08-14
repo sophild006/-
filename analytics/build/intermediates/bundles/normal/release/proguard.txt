@@ -1,0 +1,47 @@
+# To enable ProGuard in your project, edit project.properties
+# to define the proguard.config property as described in that file.
+#
+# Add project specific ProGuard rules here.
+# By default, the flags in this file are appended to flags specified
+# in ${sdk.dir}/tools/proguard/proguard-android.txt
+# You can edit the include path and order by changing the ProGuard
+# include property in project.properties.
+#
+# For more details, see
+#   http://developer.android.com/guide/developing/tools/proguard.html
+
+# Add any project specific keep options here:
+
+# If your project uses WebView with JS, uncomment the following
+# and specify the fully qualified class name to the JavaScript interface
+# class:
+#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+#   public *;
+#}
+
+-dontwarn com.solid.analytics.**
+
+# google ads
+# for fixing proguard 'name already added' bug
+-keep class com.google.ads.mediation.MediationServerParameters$Parameter { *; }
+
+# mta
+-dontwarn com.tencent.stat.**
+-dontwarn com.tencent.mid.**
+-keep class com.tencent.stat.**  {* ;}
+-keep class com.tencent.mid.**  {* ;}
+
+# AppsFlyer
+-keep class com.appsflyer.** { *; }
+-dontwarn com.appsflyer.**
+
+# Bugly
+-dontwarn com.tencent.bugly.**
+-keep class com.tencent.bugly.** { *; }
+-keep public class com.tencent.bugly.crashreport.crash.jni.NativeCrashHandler{public *; native <methods>;}
+-keep public interface com.tencent.bugly.crashreport.crash.jni.NativeExceptionHandler{*;}
+
+# component and custom view begin
+#com.solid.analytics.AnalyticsService
+#com.solid.analytics.AnalyticsReceiver
+# component and custom view end

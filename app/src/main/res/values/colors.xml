@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="skin_img_bg_stroke_color">#547df9</color>
+    <color name="skin_img_bg_failed_stroke_color">#ffffff</color>
+    <color name="btn_activate_stroke_color">#3156c4</color>
+    <color name="btn_activate_solid_color">#547df9</color>
+    <color name="btn_activate_text_color">#ffffff</color>
+    <color name="btn_activate_text_shadow_color">#000000</color>
+    <color name="guess_text_color">#666666</color>
+    <color name="guid_failed_text_color">#ffffff</color>
+    <color name="blue_title">#547DF9</color>
+    <color name="white">#FFFFFF</color>
+    <color name="progressbar_background">#e6e6e6</color>
+    <color name="progressbar_progress">#5B7AF9</color>
+</resources>

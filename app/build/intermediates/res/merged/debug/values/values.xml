@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <color name="blue_title">#547DF9</color>
+    <color name="btn_activate_solid_color">#547df9</color>
+    <color name="btn_activate_stroke_color">#3156c4</color>
+    <color name="btn_activate_text_color">#ffffff</color>
+    <color name="btn_activate_text_shadow_color">#000000</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="common_google_signin_btn_text_dark_default">@android:color/white</color>
+    <color name="common_google_signin_btn_text_dark_disabled">#1F000000</color>
+    <color name="common_google_signin_btn_text_dark_focused">@android:color/black</color>
+    <color name="common_google_signin_btn_text_dark_pressed">@android:color/white</color>
+    <color name="common_google_signin_btn_text_light_default">#90000000</color>
+    <color name="common_google_signin_btn_text_light_disabled">#1F000000</color>
+    <color name="common_google_signin_btn_text_light_focused">#90000000</color>
+    <color name="common_google_signin_btn_text_light_pressed">#DE000000</color>
+    <color name="guess_text_color">#666666</color>
+    <color name="guid_failed_text_color">#ffffff</color>
+    <color name="progressbar_background">#e6e6e6</color>
+    <color name="progressbar_progress">#5B7AF9</color>
+    <color name="skin_img_bg_failed_stroke_color">#ffffff</color>
+    <color name="skin_img_bg_stroke_color">#547df9</color>
+    <color name="white">#FFFFFF</color>
+    <declare-styleable name="AdsAttrs"><attr format="string" name="adSize"/><attr format="string" name="adSizes"/><attr format="string" name="adUnitId"/></declare-styleable>
+    <declare-styleable name="LoadingImageView"><attr name="imageAspectRatioAdjust">
+<enum name="none" value="0"/>
+
+<enum name="adjust_width" value="1"/>
+
+<enum name="adjust_height" value="2"/>
+
+</attr><attr format="float" name="imageAspectRatio"/><attr format="boolean" name="circleCrop"/></declare-styleable>
+    <declare-styleable name="SignInButton"><attr format="reference" name="buttonSize">
+<enum name="standard" value="0"/>
+
+<enum name="wide" value="1"/>
+
+<enum name="icon_only" value="2"/>
+
+</attr><attr format="reference" name="colorScheme">
+<enum name="dark" value="0"/>
+
+<enum name="light" value="1"/>
+
+<enum name="auto" value="2"/>
+
+</attr><attr format="reference|string" name="scopeUris"/></declare-styleable>
+    <dimen name="activate_height">40dp</dimen>
+    <dimen name="activate_margintop">20dp</dimen>
+    <dimen name="activate_stroke_radius">2dp</dimen>
+    <dimen name="activate_stroke_width">0.2dp</dimen>
+    <dimen name="activate_text_size">16sp</dimen>
+    <dimen name="activate_width">318dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="ad_height">50dp</dimen>
+    <dimen name="btn_marginleft">25dp</dimen>
+    <dimen name="btns_layout_marginleft">62dp</dimen>
+    <dimen name="guess_text_height">33dp</dimen>
+    <dimen name="guess_text_size">18sp</dimen>
+    <dimen name="guid_failed_cry_margintop">74dp</dimen>
+    <dimen name="guid_failed_text_margintop">18dp</dimen>
+    <dimen name="guid_failed_text_size">15sp</dimen>
+    <dimen name="guid_failed_tip_text_margintop">13dp</dimen>
+    <dimen name="guid_failed_tip_text_size">13sp</dimen>
+    <dimen name="guid_failed_update_button_bg_stroke_width">2dp</dimen>
+    <dimen name="guid_failed_update_button_height">60dp</dimen>
+    <dimen name="guid_failed_update_button_margintop">20dp</dimen>
+    <dimen name="guid_failed_update_button_text_size">12sp</dimen>
+    <dimen name="guid_failed_update_button_width">119.5dp</dimen>
+    <dimen name="recycler_view_margin_left">10dp</dimen>
+    <dimen name="share_skin_dialog_height">450dp</dimen>
+    <dimen name="share_skin_dialog_width">300dp</dimen>
+    <dimen name="skin_img_bg_fail_height">192dp</dimen>
+    <dimen name="skin_img_bg_fail_width">261dp</dimen>
+    <dimen name="skin_img_bg_height">234dp</dimen>
+    <dimen name="skin_img_bg_marginleft">20dp</dimen>
+    <dimen name="skin_img_bg_marginleft_fail">50dp</dimen>
+    <dimen name="skin_img_bg_margintop">20dp</dimen>
+    <dimen name="skin_img_bg_margintop_fail">50dp</dimen>
+    <dimen name="skin_img_bg_stroke_radius">5dp</dimen>
+    <dimen name="skin_img_bg_stroke_width">2dp</dimen>
+    <dimen name="skin_img_bg_width">318dp</dimen>
+    <dimen name="skin_img_failed_height">182dp</dimen>
+    <dimen name="skin_img_failed_width">251dp</dimen>
+    <dimen name="skin_img_height">221dp</dimen>
+    <dimen name="skin_img_width">303dp</dimen>
+    <dimen name="skin_item_space">1dp</dimen>
+    <integer name="activate_shadow_dx">1</integer>
+    <integer name="activate_shadow_dy">1</integer>
+    <integer name="google_play_services_version">10298000</integer>
+    <string name="accept">Accept</string>
+    <string name="app_name">Test Analytics</string>
+    <string msgid="2523291102206661146" name="common_google_play_services_enable_button">Enable</string>
+    <string msgid="227660514972886228" name="common_google_play_services_enable_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t work unless you enable Google Play services.</string>
+    <string msgid="5122002158466380389" name="common_google_play_services_enable_title">Enable Google Play services</string>
+    <string msgid="7153882981874058840" name="common_google_play_services_install_button">Install</string>
+    <string name="common_google_play_services_install_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t run without Google Play services, which are missing from your device.</string>
+    <string msgid="7215213145546190223" name="common_google_play_services_install_title">Get Google Play services</string>
+    <string name="common_google_play_services_notification_ticker">Google Play services error</string>
+    <string name="common_google_play_services_unknown_issue"><ns1:g id="app_name">%1$s</ns1:g> is having trouble with Google Play services. Please try again.</string>
+    <string name="common_google_play_services_unsupported_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t run without Google Play services, which are not supported by your device.</string>
+    <string msgid="6556509956452265614" name="common_google_play_services_update_button">Update</string>
+    <string msgid="9053896323427875356" name="common_google_play_services_update_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t run unless you update Google Play services.</string>
+    <string msgid="6006316683626838685" name="common_google_play_services_update_title">Update Google Play services</string>
+    <string name="common_google_play_services_updating_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t run without Google Play services, which are currently updating.</string>
+    <string name="common_google_play_services_wear_update_text">New version of Google Play services needed. It will update itself shortly.</string>
+    <string name="common_open_on_phone">Open on phone</string>
+    <string name="common_signin_button_text">Sign in</string>
+    <string name="common_signin_button_text_long">Sign in with Google</string>
+    <string name="create_calendar_message">Allow Ad to create a calendar event?</string>
+    <string name="create_calendar_title">Create calendar event</string>
+    <string name="debug_menu_ad_information">Ad Information</string>
+    <string name="debug_menu_creative_preview">Creative Preview</string>
+    <string name="debug_menu_title">Select a Debug Mode</string>
+    <string name="debug_menu_troubleshooting">Troubleshooting</string>
+    <string name="decline">Decline</string>
+    <string name="default_web_client_id" translatable="false">837569605998-5mfunqn7v134n7q6psurq6f3k22f9d8j.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://data-3769a.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">837569605998</string>
+    <string name="google_api_key" translatable="false">AIzaSyCXKDn4G7GAollH0N7U3sqNtyR_k_MeivA</string>
+    <string name="google_app_id" translatable="false">1:837569605998:android:467790a42a29a7e2</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCXKDn4G7GAollH0N7U3sqNtyR_k_MeivA</string>
+    <string name="google_storage_bucket" translatable="false">data-3769a.appspot.com</string>
+    <string name="store_picture_message">"Allow Ad to store image in Picture gallery?"</string>
+    <string name="store_picture_title">Save image</string>
+    <style name="Theme.IAPTheme" parent="android:Theme">
+<item name="android:windowIsFloating">true</item>
+<item name="android:windowBackground">@android:color/transparent</item>
+<item name="android:windowContentOverlay">@null</item>
+<item name="android:windowNoTitle">true</item>
+<item name="android:backgroundDimEnabled">false</item>
+<item name="android:windowIsTranslucent">true</item>
+</style>
+</resources>

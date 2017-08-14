@@ -1,0 +1,104 @@
+apply plugin: 'com.android.library'
+
+def releaseDate() {
+    return new Date().format("MMdd", TimeZone.getTimeZone("UTC+8"))
+}
+
+def quote(String s) {
+    return "\"" + s + "\""
+}
+
+def THRIFT_KEY = "68f994b9cd7682216476aac4b6d1d3ca"
+def THRIFT_IV = "bb6468aa50eaa4bbc9f37c0f546891e6"
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 22
+        versionCode rootProject.ext.versionCode
+        versionName "1.0.${versionCode}"
+
+        consumerProguardFiles 'proguard-project.txt'
+
+        buildConfigField("String", "THRIFT_KEY", quote(THRIFT_KEY))
+        buildConfigField("String", "THRIFT_IV", quote(THRIFT_IV))
+    }
+
+    productFlavors {
+        normal {
+        }
+
+        nomta {
+        }
+    }
+
+    publishNonDefault true
+
+    configurations {
+        normalDebugCompile
+        normalReleaseCompile
+        nomtaDebugCompile
+        nomtaReleaseCompile
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), "proguard-project.txt"
+
+            libraryVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def file = output.outputFile
+                    def flavor = variant.productFlavors[0].name
+                    def flavorSuffix = ""
+                    if (flavor != "normal") {
+                        flavorSuffix = "-" + flavor
+                    }
+                    def fileName = file.name.replace("analytics-" + flavor + "-release.aar", "analytics" + flavorSuffix + "-library-release" + "-v" + defaultConfig.versionName + ".aar")
+                    output.outputFile = new File(file.parent, fileName)
+                }
+            }
+        }
+    }
+
+    sourceSets {
+        normal.jniLibs.srcDirs = ['libs', 'libs_normal']
+        nomta.jniLibs.srcDirs = ['libs', 'libs_nomta']
+    }
+}
+
+dependencies {
+    normalCompile fileTree(dir: 'libs', include: ['*.jar'])
+    normalCompile fileTree(dir: 'libs_normal', include: ['*.jar'])
+    nomtaCompile fileTree(dir: 'libs', include: ['*.jar'])
+    nomtaProvided fileTree(dir: 'libs_nomta', include: ['*.jar'])
+
+    compile 'com.google.android.gms:play-services-ads:10.2.0'
+
+    /* dependency begin */
+    // firebase analytics
+    compile 'com.google.firebase:firebase-core:10.2.0'
+
+    // mta in jar
+
+    // google analytics
+    compile 'com.google.android.gms:play-services-analytics:10.2.0'
+
+    // umeng
+    compile 'com.umeng.analytics:analytics:6.1.0'
+
+    // bugly
+    compile 'com.tencent.bugly:crashreport:2.6.0'
+    compile 'com.tencent.bugly:nativecrashreport:3.2.0'
+
+    // appsflyer
+    compile 'com.appsflyer:af-android-sdk:4.7.1'
+
+    // iid for appsflyer
+    compile 'com.google.android.gms:play-services-iid:10.2.0'
+
+    /* dependency end */
+}

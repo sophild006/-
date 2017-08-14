@@ -1,0 +1,2 @@
+com.demo.MainApp -> com.xx.App:
+com.solid.analytics.AnalyticsService -> com.xx.x.AnalyticsService:
